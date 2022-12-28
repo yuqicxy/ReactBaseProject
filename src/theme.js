@@ -1,5 +1,4 @@
-import { createTheme } from "@material-ui/core";
-
+import { createTheme } from "@mui/material";
 // custom theme
 const theme = createTheme({
   palette: {
@@ -7,7 +6,7 @@ const theme = createTheme({
       main: "#556cd6",
     },
     background: {
-      default: "#ffffff",
+      default: "#F8F8F8",
     },
     green: {
       main: "rgb(0, 82, 73)",
@@ -38,6 +37,9 @@ const theme = createTheme({
     },
     red: {
       main: "rgb(255, 72, 66)",
+    },
+    white:{
+      main:"rgb(255,255,255)",
     },
     mixins: {
       toolbar: {
