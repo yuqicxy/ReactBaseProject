@@ -5,7 +5,7 @@ const rootDir = __dirname;
 
 module.exports = {
     entry:{
-        main: path.resolve(rootDir,'./src/index/index.jsx'),
+        main: path.resolve(rootDir,'./src/index.jsx'),
     },
     output:{
         path:path.resolve(rootDir,'./dist'),
