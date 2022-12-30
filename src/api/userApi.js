@@ -1,0 +1,59 @@
+export const users = [
+    {
+        name:"Ava Gregoraci",
+        place:"Bulgaria",
+        portrait:"https://raw.githubusercontent.com/yuqicxy/ReactBaseProject/47be30b8273eabf29970d0696f679885ad164c5f/src/images/Person1.png",
+        media:{
+            Instagram:{
+                number:65376,
+                percentage:'0.5'
+            },
+            Facebook:{
+                number:12109,
+                percentage:'0.4'
+            },
+            Twitter:{
+                number:132645,
+                percentage:'0.55'
+            }
+        }
+    },
+    {
+        name:"Somun Ae-Ri",
+        place:"Bulgaria",
+        portrait:"https://raw.githubusercontent.com/yuqicxy/ReactBaseProject/47be30b8273eabf29970d0696f679885ad164c5f/src/images/Person3.png",
+        media:{
+            Instagram:{
+                number:65376,
+                percentage:'0.5'
+            },
+            Facebook:{
+                number:12109,
+                percentage:'0.4'
+            },
+            Twitter:{
+                number:132645,
+                percentage:'0.55'
+            }
+        }
+    },
+    {
+        name:"Lilah Ioselev",
+        place:"Bulgaria",
+        portrait:"https://raw.githubusercontent.com/yuqicxy/ReactBaseProject/47be30b8273eabf29970d0696f679885ad164c5f/src/images/Person2.png",
+        media:{
+            Instagram:{
+                number:65376,
+                percentage:'0.5'
+            },
+            Facebook:{
+                number:12109,
+                percentage:'0.4'
+            },
+            Twitter:{
+                number:132645,
+                percentage:'0.55'
+            }
+        }
+    },
+]
