@@ -32,7 +32,7 @@ const TranformedLogo = styled(logo)(({theme})=>({
 const MenuButton = (props)=>{
     let marginAttr = (props.isLastChild)?"auto auto 40px auto":"40px auto 40px auto";
     return  <IconButton sx={{margin:marginAttr}}>
-                <SvgIcon sx={{marginBottom:"0px"}} component={props.img}></SvgIcon>
+                <SvgIcon component={props.img} inheritViewBox></SvgIcon>
             </IconButton>
 }
 
@@ -99,7 +99,6 @@ const UserAvatar = (props)=>{
     return <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt={props.user.name} src={props.user.portrait}/>
 };
 
-
 const Dashboard = function(prop){
     const theme = useTheme();
     return (<Box sx={{display:"flex",flexDirection:"row",minHeight:"100vh",minWidth:"100vw"}}>
@@ -110,12 +109,9 @@ const Dashboard = function(prop){
                 <Stack sx={{ml:"auto"}} spacing={.5} direction="row">
                     <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot">
                         <UserAvatar user={users[0]} ></UserAvatar>
-                        {/* <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Person1}/> */}
                     </StyledBadge>
-                    <UserAvatar user={users[0]} ></UserAvatar>
-                    <UserAvatar user={users[0]} ></UserAvatar>
-                    {/* <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Person2}/>
-                    <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Person3}/> */}
+                    <UserAvatar user={users[1]} ></UserAvatar>
+                    <UserAvatar user={users[2]} ></UserAvatar>
                     <AddPeople sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Plus}/>
                 </Stack>
             </Box>

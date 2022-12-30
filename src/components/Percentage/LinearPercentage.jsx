@@ -3,8 +3,6 @@ import { styled, useTheme, Box } from "@mui/material"
 const Rect= styled('div')((theme,props)=>({
     ...props,
     height:"0.5em",
-    // left:0,
-    // bottom:0,
     borderRadius:'71px',
 }))
 
