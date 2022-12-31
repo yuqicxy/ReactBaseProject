@@ -22,11 +22,11 @@ const PersonList = (props)=>{
             return <MediaInfo key={k} color={colors[index%3]} title={mediaType.toString()} info={user.media[mediaType]}/>
         })
 
-        return <PersonCard key={index} person={user}>
+        return <PersonCard sx={{borderRadius:'10px'}} key={index} person={user}>
             {ItemList}
         </PersonCard>
     });
-    
+
     return <Fragment>
         {persons}
     </Fragment>

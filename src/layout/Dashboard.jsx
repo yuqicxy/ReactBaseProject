@@ -15,7 +15,7 @@ import Plus from "../images/Plus.png"
 import { users } from "../api/userApi"
 
 const Menu = styled(List)(({theme})=>({
-    minHeight:"100vh",
+    height:"100%",
     width: '96px',
     display:"flex",
     flexDirection:'column',
@@ -30,7 +30,7 @@ const TranformedLogo = styled(logo)(({theme})=>({
 }))
 
 const MenuButton = (props)=>{
-    let marginAttr = (props.isLastChild)?"auto auto 40px auto":"40px auto 40px auto";
+    let marginAttr = (props.isLastChild)?"auto auto 20px auto":"20px auto 20px auto";
     return  <IconButton sx={{margin:marginAttr}}>
                 <SvgIcon component={props.img} inheritViewBox></SvgIcon>
             </IconButton>
@@ -101,9 +101,9 @@ const UserAvatar = (props)=>{
 
 const Dashboard = function(prop){
     const theme = useTheme();
-    return (<Box sx={{display:"flex",flexDirection:"row",minHeight:"100vh",minWidth:"100vw"}}>
+    return (<Box sx={{display:"flex",flexDirection:"row",height:"100%",width:"100%"}}>
         <MenuBar/>
-        <Box sx={{flexGrow:1, padding:6}}>
+        <Box sx={{flexGrow:1, pt:6, pl:6, pr:6}}>
             <Box sx={{display:"flex",justifyContent:"space-between",flexDirection:"row",alignContent:"center"}}>
                 <SearchInput></SearchInput>
                 <Stack sx={{ml:"auto"}} spacing={.5} direction="row">

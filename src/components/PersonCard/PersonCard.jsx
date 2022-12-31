@@ -15,7 +15,7 @@ const Person = (props)=>{
 const PersonCard = (props)=>{
     const theme = useTheme();
 
-    return <Box sx={{backgroundColor:theme.palette.background.main, width:"30%", minWidth:"448px"}}>
+    return <Box sx={{...props.sx,backgroundColor:theme.palette.background.main, width:"30%", minWidth:"448px"}}>
         <Stack sx={{padding:theme.spacing(2)}} direction={'row'} justifyContent={'space-between'}>
             <Person portrait={props.person.portrait} name={props.person.name} place={props.person.place}></Person>
             <SvgIcon color='gray' component={Color} inheritViewBox></SvgIcon>
