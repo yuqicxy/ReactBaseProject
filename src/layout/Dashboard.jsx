@@ -15,7 +15,7 @@ import Plus from "../images/Plus.png"
 import { users } from "../api/userApi"
 
 const Menu = styled(List)(({theme})=>({
-    height:"100%",
+    height:"100vh",
     width: '96px',
     display:"flex",
     flexDirection:'column',

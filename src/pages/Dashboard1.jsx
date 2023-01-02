@@ -2,6 +2,7 @@ import { Box, Stack, Typography, useTheme } from "@mui/material";
 import PersonList from "../components/PersonCard/PersonList";
 import Ads from "../components/Ads/Ads"
 import PieChart from "../components/Percentage/PieChart";
+import { users } from "../api/userApi";
 
 const Dashboard1 = (props)=>{
     const theme = useTheme();
@@ -15,7 +16,13 @@ const Dashboard1 = (props)=>{
                 <PersonList/>
             </Stack>
             <Ads sx={{width:"65%",height:"169px", p:2,mt:4,borderRadius:'10px'}}></Ads>
-            <PieChart title={"hello"}></PieChart>
+            <Stack direction={'row'} spacing={1} sx={{mt:4,mb:1}}>
+                <PieChart title={"Facebook"}></PieChart>
+                <PieChart title={"Twitter"}></PieChart>
+                <PieChart title={"Instagram"}></PieChart>
+                <PieChart title={"Behance"}></PieChart>
+            </Stack>
+
         </Box>
 }
 

@@ -86,13 +86,13 @@ const theme = createTheme({
         h1:{
             fontFamily: 'RobotoRegular',
             fontSize: '40px',
-            fontWeight:'500',
+            fontWeight:'1000',
             lineHeight: '52px',
         },
         h2:{
           fontFamily: 'RobotoRegular',
           fontStyle: 'normal',
-          fontWeight: '500',
+          fontWeight: '800',
           fontSize: '22px',
           lineHeight: '29px'
         },
