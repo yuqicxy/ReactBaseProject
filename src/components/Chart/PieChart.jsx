@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, styled, useTheme } from "@mui/material"
 import users from "../../api/userApi"
-import PieEchart from './PieEchart';
+import Echart from './Echart';
 
 const Content = styled(Box,{
         shouldForwardProp: (prop) => prop !== 'color' && prop !== 'variant' && prop !== 'sx',
@@ -15,17 +15,11 @@ const Container = styled('div')(({theme})=>({
     position:"relative",
 }))
 
-
 const PieChart = (props)=>{
     const theme = useTheme();
     const gaugeData = [
         {
-          value: 50,
-          name: 'Perfect',   
-          // detail: {
-          //   valueAnimation: true,
-          //   offsetCenter: ['0%', '0%']
-          // }
+          value: props.data.value,
         },
       ];
     let option = {
@@ -42,18 +36,17 @@ const PieChart = (props)=>{
               overlap: false,
               roundCap: true,
               clip: false,
-              itemStyle: {
-                borderWidth: 0,
-                borderColor: '#E2FBD7'
-              }
+              // itemStyle: {
+              //   borderWidth: 0,
+              //   borderColor: props.lightColor
+              // }
             },
             axisLine: {
               lineStyle: {
                 width: 20,
-                color:[[1, '#E2FBD7']]
+                color:[[1, props.color.light]]
               }
             },
-            // splitNumber:100,
             splitLine: {
               show: false,
               distance: 0,
@@ -85,19 +78,19 @@ const PieChart = (props)=>{
             }
         ],
         color:[
-          "#34B53A",
-          "#E2FBD7"
+          props.color.main,
+          props.color.light
         ],
     };
     
 
     return <Stack sx={{width:'300px',borderRadius:"10%",backgroundColor:theme.palette.white.main}}>
-        <Typography align="center" sx={{pt:4}} variant="h2">{props.title}</Typography>
+        <Typography align="center" sx={{pt:4}} variant="h2">{props.data.name}</Typography>
         {/* <Content sx={{backgroundColor:theme.palette.success.main}}> */}
             {/* <Typography sx={{display:"table-cell",verticalAlign:"middle",textAlign:"center"}} variant="h2" >{"18%"}</Typography> */}
             {/* <Box sx={{position:"absolute",left:0,right:0}}> */}
             {/* </Box> */}
-            <PieEchart width={300} height={300} options = {option}></PieEchart>
+            <Echart width={300} height={300} options = {option}></Echart>
         {/* </Content> */}
     </Stack>
 }
