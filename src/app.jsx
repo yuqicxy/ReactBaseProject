@@ -1,9 +1,9 @@
 import React from "react";
-import Dashboard from "./layout/Dashboard";
-import Dashboard1 from "./pages/Dashboard1";
+import Layout1 from "./layout/layout1";
+import Page1 from "./pages/Page1";
 
 export default function App(){
-    return  <Dashboard>
-                <Dashboard1/>
-            </Dashboard>
+    return  <Layout1>
+                <Page1/>
+            </Layout1>
 }

@@ -5,7 +5,7 @@ import PieChart from "../components/Chart/PieChart";
 import BarChart from "../components/Chart/BarChart";
 import { socialMedia } from "../api/socialMediaApi";
 
-const Dashboard1 = (props)=>{
+const Page1 = (props)=>{
     const theme = useTheme();
     const colorSet = [
         theme.palette.success,
@@ -37,4 +37,4 @@ const Dashboard1 = (props)=>{
     </Grid>
 }
 
-export default Dashboard1
+export default Page1

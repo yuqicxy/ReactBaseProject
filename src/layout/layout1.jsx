@@ -99,7 +99,7 @@ const UserAvatar = (props)=>{
     return <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt={props.user.name} src={props.user.portrait}/>
 };
 
-const Dashboard = function(prop){
+const Layout1 = function(prop){
     const theme = useTheme();
     return (<Box sx={{display:"flex",flexDirection:"row",height:"100%",width:"100%"}}>
         <MenuBar/>
@@ -122,4 +122,4 @@ const Dashboard = function(prop){
 
 const AvatarSize = "2em";
 
-export default Dashboard;
+export default Layout1;
