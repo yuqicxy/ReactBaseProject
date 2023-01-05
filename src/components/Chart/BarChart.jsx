@@ -19,7 +19,8 @@ const BarChart = (props)=>{
         title:{
             show:true,
             text:'Aussie chef shares culinary',
-            // left:'center',
+            left:'center',
+            fontSize:'40',
         },
         series: [
             {
@@ -32,7 +33,7 @@ const BarChart = (props)=>{
             }
         ]
     }
-    return <Echart sx={{width:'100%',height:'100%'}} options = {option}></Echart>
+    return <Echart sx={{...props.sx,width:'100%',height:'100%'}} options = {option}></Echart>
 }
 
 export default BarChart;

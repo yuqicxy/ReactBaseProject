@@ -36,10 +36,6 @@ const PieChart = (props)=>{
               overlap: false,
               roundCap: true,
               clip: false,
-              // itemStyle: {
-              //   borderWidth: 0,
-              //   borderColor: props.lightColor
-              // }
             },
             axisLine: {
               lineStyle: {
@@ -84,15 +80,10 @@ const PieChart = (props)=>{
     };
     
 
-    return <Stack sx={{width:'300px',borderRadius:"10%",backgroundColor:theme.palette.white.main}}>
+    return <Box sx={{width:'100%', minWidth:'200px',borderRadius:"10%",backgroundColor:theme.palette.white.main}}>
         <Typography align="center" sx={{pt:4}} variant="h2">{props.data.name}</Typography>
-        {/* <Content sx={{backgroundColor:theme.palette.success.main}}> */}
-            {/* <Typography sx={{display:"table-cell",verticalAlign:"middle",textAlign:"center"}} variant="h2" >{"18%"}</Typography> */}
-            {/* <Box sx={{position:"absolute",left:0,right:0}}> */}
-            {/* </Box> */}
-            <Echart width={300} height={300} options = {option}></Echart>
-        {/* </Content> */}
-    </Stack>
+        <Echart sx={{width:'100%',minHeight:"15em"}} options = {option}></Echart>
+    </Box>
 }
 
 export default PieChart;
