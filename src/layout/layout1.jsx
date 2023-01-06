@@ -15,12 +15,15 @@ import Plus from "../images/Plus.png"
 import { users } from "../api/userApi"
 
 const Menu = styled(List)(({theme})=>({
-    height:"100vh",
+    minHeight:"100vh",
     width: '96px',
     display:"flex",
     flexDirection:'column',
     borderRadius:"0px 20px 20px 0px",
     backgroundColor: theme.palette.white.main,
+    flexShrink:0,
+    position:"fixed",
+    overflowY:"auto",
 }))
 
 const TranformedLogo = styled(logo)(({theme})=>({
@@ -99,12 +102,29 @@ const UserAvatar = (props)=>{
     return <Avatar sx={{width:AvatarSize,height:AvatarSize}} alt={props.user.name} src={props.user.portrait}/>
 };
 
+const Container = styled(Box)(({theme})=>({
+    flexGrow:1,
+    pt:theme.spacing(6), 
+    pl:theme.spacing(6), 
+    pr:theme.spacing(6),
+    "&:first-of-type":{
+        right:theme.spacing(6), 
+        top:theme.spacing(6),
+        position:"fixed",
+        width:`calc(100% - 96px - 2 * ${theme.spacing(6)})`,
+        zIndex:2
+    }
+}));
+
+
 const Layout1 = function(prop){
     const theme = useTheme();
-    return (<Box sx={{display:"flex",flexDirection:"row",height:"100%",width:"100%"}}>
-        <MenuBar/>
+    return (<Box sx={{display:"flex",flexDirection:"row"}}>
+        <Box sx={{width:"96px",height:"100vh",flexShrink:0}}>
+            <MenuBar/>
+        </Box>
         <Box sx={{flexGrow:1, pt:6, pl:6, pr:6}}>
-            <Box sx={{display:"flex",justifyContent:"space-between",flexDirection:"row",alignContent:"center"}}>
+            <Container sx={{display:"flex",justifyContent:"space-between",flexDirection:"row",alignContent:"center"}}>
                 <SearchInput></SearchInput>
                 <Stack sx={{ml:"auto"}} spacing={.5} direction="row">
                     <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot">
@@ -114,7 +134,7 @@ const Layout1 = function(prop){
                     <UserAvatar user={users[2]} ></UserAvatar>
                     <AddPeople sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Plus}/>
                 </Stack>
-            </Box>
+            </Container>
             {prop.children}
         </Box>
     </Box>)
