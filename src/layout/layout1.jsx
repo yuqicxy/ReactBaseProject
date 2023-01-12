@@ -1,4 +1,5 @@
 import { styled } from "@mui/system"
+import { Outlet, useLocation } from "react-router-dom";
 import { Box, Divider, List, Input, IconButton, useTheme, Badge, Avatar, Stack, SvgIcon } from "@mui/material"
 import logo from '../images/logo.svg'
 import Icon1 from "../images/Icon 1.svg"
@@ -119,6 +120,8 @@ const Container = styled(Box)(({theme})=>({
 
 const Layout1 = function(prop){
     const theme = useTheme();
+    const location = useLocation();
+
     return (<Box sx={{display:"flex",flexDirection:"row"}}>
         <Box sx={{width:"96px",height:"100vh",flexShrink:0}}>
             <MenuBar/>
@@ -135,6 +138,7 @@ const Layout1 = function(prop){
                     <AddPeople sx={{width:AvatarSize,height:AvatarSize}} alt="Remy Sharp" src={Plus}/>
                 </Stack>
             </Container>
+            <Outlet key={location.pathname}/>
             {prop.children}
         </Box>
     </Box>)

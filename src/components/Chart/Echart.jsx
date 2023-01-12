@@ -1,40 +1,43 @@
 import { useEffect, useRef } from "react"
-// import * as echarts from 'echarts'
-import * as echarts from 'echarts/core';
+import * as echarts from 'echarts'
 
-// Import bar charts, all suffixed with Chart
-import { BarChart,GaugeChart } from 'echarts/charts';
+// import * as echarts from 'echarts/core';
 
-// Import the tooltip, title, rectangular coordinate system, dataset and transform components
-import {
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  DatasetComponent,
-  TransformComponent
-} from 'echarts/components';
+// // Import bar charts, all suffixed with Chart
+// import { BarChart,GaugeChart, TreeChart } from 'echarts/charts';
 
-// Features like Universal Transition and Label Layout
-import { LabelLayout, UniversalTransition } from 'echarts/features';
+// // Import the tooltip, title, rectangular coordinate system, dataset and transform components
+// import {
+//   TitleComponent,
+//   TooltipComponent,
+//   GridComponent,
+//   DatasetComponent,
+//   TransformComponent,
+//   // LabelLayout,
+// } from 'echarts/components';
 
-// Import the Canvas renderer
-// Note that including the CanvasRenderer or SVGRenderer is a required step
-import { CanvasRenderer } from 'echarts/renderers';
+// // Features like Universal Transition and Label Layout
+// import { LabelLayout, UniversalTransition } from 'echarts/features';
+
+// // Import the Canvas renderer
+// // Note that including the CanvasRenderer or SVGRenderer is a required step
+// import { CanvasRenderer } from 'echarts/renderers';
 import { Box } from "@mui/material";
 
-// Register the required components
-echarts.use([
-  BarChart,
-  GaugeChart,
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  DatasetComponent,
-  TransformComponent,
-  LabelLayout,
-  UniversalTransition,
-  CanvasRenderer
-]);
+// // Register the required components
+// echarts.use([
+//   BarChart,
+//   GaugeChart,
+//   TreeChart,
+//   TitleComponent,
+//   TooltipComponent,
+//   GridComponent,
+//   DatasetComponent,
+//   TransformComponent,
+//   LabelLayout,
+//   UniversalTransition,
+//   CanvasRenderer
+// ]);
 
 const Echart = (props)=>{
     const chartDom = useRef();
