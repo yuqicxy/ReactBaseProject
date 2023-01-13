@@ -17,13 +17,16 @@ const UnitOrganization = (props)=>{
             }
             const seriesModel = series[0];
 
-            // let tree = seriesModel.getData().tree;
-            // const curNode = tree.getNodeByDataIndex(params.dataIndex);
-            // console.log("expand node\t",curNode.name);
-            // console.log("data param");
-
             let dataParam = seriesModel.getDataParams(params.dataIndex);
             let data = unitTree.getDirectUnitData(dataParam.data.name);
+            //clear the data before update to avoid the issue in tree data diff algorithms
+            this.setOption({
+                series:[
+                    {
+                        data:[],
+                    }
+                ]
+            })
             this.setOption({
                 series:[
                     {
@@ -78,7 +81,7 @@ const UnitOrganization = (props)=>{
           trigger: "item",
           triggerOn: "mousemove",
         },
-        animation:false,
+        // animation:false,
         series: [
           {
             type: "tree",
@@ -92,7 +95,7 @@ const UnitOrganization = (props)=>{
             layout:"orthogonal",
             orient:"vertical",
             edgeShape:"polyline",
-            edgeForkPosition:"20%",
+            // edgeForkPosition:"20%",
             label: {
               padding: [3, 10, 10, 5],
               backgroundColor: "white",

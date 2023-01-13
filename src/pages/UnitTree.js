@@ -93,7 +93,8 @@ class UnitTree{
             for(let child of curNode.children){
                 let tmp = {};
                 Object.assign(tmp,child);
-                tmp.children = [];
+                // tmp.children = [];
+                delete tmp.children;
                 delete tmp.parent;
                 last.children.push(tmp)
             }
