@@ -54,6 +54,10 @@ const Echart = (props)=>{
         else{
             mychart = echarts.init(chartDom.current)
         }
+
+        for (const item in props.events){
+          mychart.on(item,props.events[item]);
+        }
         
         const resizeObserver = new ResizeObserver((entries) => {
             for (const entry of entries) {
@@ -67,10 +71,11 @@ const Echart = (props)=>{
             console.log('Size changed');
           });
           resizeObserver.observe(chartDom.current);
-
           props.options&&mychart.setOption(props.options);
-
           return ()=>{
+            for (const item in props.events){
+                mychart.off(props.item,props.events[item]);
+            }
             resizeObserver.unobserve(chartDom.current);
           }
     },

@@ -49,5 +49,8 @@ module.exports = {
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
-    }
+    },
+    devtool:"source-map",
 }
+
+// exports.generateSourceMaps = ({ type }) => ({ devtool: type });

@@ -1,47 +1,63 @@
 import Echart from '../components/Chart/Echart';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { orgStruct,milIcon } from '../api/orgStruct';
+import UnitTree from './UnitTree';
+
+
+let unitTree = new UnitTree(orgStruct);
 
 const UnitOrganization = (props)=>{
-    const orgLabel = {
-        width:250,
-        height:100
+    const events = {
+        "click":function(params){
+            console.log("treeExpandAndCollapse:");
+            const series = this.getModel().getSeries();
+            if(!series || !series.length ){
+                console.log("no valid series");
+                return false;
+            }
+            const seriesModel = series[0];
+
+            // let tree = seriesModel.getData().tree;
+            // const curNode = tree.getNodeByDataIndex(params.dataIndex);
+            // console.log("expand node\t",curNode.name);
+            // console.log("data param");
+
+            let dataParam = seriesModel.getDataParams(params.dataIndex);
+            let data = unitTree.getDirectUnitData(dataParam.data.name);
+            this.setOption({
+                series:[
+                    {
+                        data:[data],
+                    }
+                ]
+            })
+            console.log(data);
+        }
     };
+
+    const fontSize = 14;
+    const data = unitTree.getRootDirectUnitData();
+
     const dims = {
         name: "name",
         milCode: "milCode",
         officers: "officers",
-        otherRanks: "otherRanks",
+        otherRanks: "other ranks",
     };
     let richStyles =  {
-        headLine: {
-          width: "100%",//orgLabel.width,
-          // width: orgLabel.width,
-          height: 5,
-          backgroundColor:
-            "#" + Math.floor(Math.random() * 16777215).toString(16),
-          position: "absolute",
-          align: "top",
-        },
         username: {
-          align: "left",
-          padding: [10,10,10,10],
-          verticalAlign: "top",
-          fontSize: 15,
-          // width: 50,
-          // height: 50,
+            align: "left",
+            padding: [10,10,10,10],
+            verticalAlign: "top",
+            fontSize: fontSize,
         },
         userTitle: {
           align: "left",
-          // position:"absolute",
           left:50,
           padding: [-25, 0, 0, 65],
-          // verticalAlign: "top",
           color: "#808080",
           fontWeight: 10,
-          fontSize: 12,
-          // width: 50,
-          // height: 50,
+          fontSize: fontSize - 2,
         },
     }
     for(let icon in milIcon){
@@ -62,22 +78,22 @@ const UnitOrganization = (props)=>{
           trigger: "item",
           triggerOn: "mousemove",
         },
+        animation:false,
         series: [
           {
             type: "tree",
-            data:[
-                orgStruct
-            ],
+            expandAndCollapse:false,
+            initialTreeDepth:undefined,
+            data:[data],
             left:100,
             top:100,
             bottom:100,
             right:100,
-            initialTreeDepth:1,
             layout:"orthogonal",
             orient:"vertical",
             edgeShape:"polyline",
+            edgeForkPosition:"20%",
             label: {
-              // width: orgLabel.width,
               padding: [3, 10, 10, 5],
               backgroundColor: "white",
               borderWidth: 80,
@@ -88,10 +104,8 @@ const UnitOrganization = (props)=>{
               shadowOffsetY: 5,
               formatter:function(param){
                 return [
-                    // ["{headLine|}"],
                     ["{"+param.data[dims.milCode]+"|}", "{username|" + param.data[dims.name]+"}"].join(""),
                     ["{userTitle|" + "x" +  param.data.officers   + " " + dims.officers   + "\t x" + param.data.otherRanks +" "+ dims.otherRanks + "}"],
-                    // ["{userTitle|" + "x" +  param.data.otherRanks + " " + dims.otherRanks + "}"],
                 ].join("\n");
               },
               rich: richStyles,
@@ -99,8 +113,10 @@ const UnitOrganization = (props)=>{
           },
         ],
     };
+
     return <>
-      <Echart sx={{width:'100%',height:"100%"}} options={options}></Echart>
+      <Echart sx={{width:'100%',height:"100%"}} options={options} events={events}></Echart>
+      {/* <Echart sx={{width:'100%',height:"100%"}} options={options} ></Echart> */}
     </>
 }
 
