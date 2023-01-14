@@ -10,6 +10,7 @@ module.exports = {
     output:{
         path:path.resolve(rootDir,'./dist'),
         clean: true,
+        publicPath:'/'
     },
     module:{
         rules:[
@@ -38,6 +39,7 @@ module.exports = {
     devServer: {
         static: path.resolve(__dirname, './dist/'),
         hot: true,
+        historyApiFallback: true,
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
