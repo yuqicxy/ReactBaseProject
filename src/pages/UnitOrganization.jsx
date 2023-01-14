@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { orgStruct,milIcon } from '../api/orgStruct';
 import UnitTree from './UnitTree';
 
-
 let unitTree = new UnitTree(orgStruct);
 
 const UnitOrganization = (props)=>{
@@ -16,24 +15,10 @@ const UnitOrganization = (props)=>{
                 return false;
             }
             const seriesModel = series[0];
-
             let dataParam = seriesModel.getDataParams(params.dataIndex);
             let data = unitTree.getDirectUnitData(dataParam.data.name);
-            //clear the data before update to avoid the issue in tree data diff algorithms
-            this.setOption({
-                series:[
-                    {
-                        data:[],
-                    }
-                ]
-            })
-            this.setOption({
-                series:[
-                    {
-                        data:[data],
-                    }
-                ]
-            })
+            this.setOption({series:[{data:[],}]})
+            this.setOption({series:[{data:[data]}]})
             console.log(data);
         }
     };
@@ -119,7 +104,6 @@ const UnitOrganization = (props)=>{
 
     return <>
       <Echart sx={{width:'100%',height:"100%"}} options={options} events={events}></Echart>
-      {/* <Echart sx={{width:'100%',height:"100%"}} options={options} ></Echart> */}
     </>
 }
 

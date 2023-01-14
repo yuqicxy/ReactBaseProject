@@ -8,10 +8,10 @@ import UnitOrganization from './pages/UnitOrganization';
 import './app.css';
 
 export default function App(){
-    return <Layout1>
-        {/* <Page1></Page1> */}
-        <UnitOrganization />
-    </Layout1>
+    // return <Layout1>
+    //     {/* <Page1></Page1> */}
+    //     <UnitOrganization />
+    // </Layout1>
     return <Routes>
             <Route path="/" element={<Layout1/>}>
                 <Route path="page1" element={<Page1 />} />
