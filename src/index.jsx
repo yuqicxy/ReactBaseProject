@@ -9,15 +9,18 @@ import {
     RouterProvider,
   } from "react-router-dom";
   import "./index.css";
-import Root from "./routes/root";
+import Root, {loader as RootLoader, action as rootAction} from "./routes/root";
 import ErrorPage from "./error-page";
 import Contact from "./routes/contact";
+
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
         errorElement: <ErrorPage></ErrorPage>,
+        loader:RootLoader,
+        action:rootAction,
         children:[
             {
                 path: "contacts/:contactId",
@@ -25,10 +28,6 @@ const router = createBrowserRouter([
             }
         ]
     },
-    {
-        path: "contacts/1",
-        element: <Contact></Contact>
-    }
 ]);
 
 ReactDOM.render(
