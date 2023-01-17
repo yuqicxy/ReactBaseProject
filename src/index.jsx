@@ -12,7 +12,7 @@ import {
 import Root, {loader as RootLoader, action as rootAction} from "./routes/root";
 import ErrorPage from "./error-page";
 import Contact from "./routes/contact";
-import {loader as contactLoader} from "./routes/contact";
+import {loader as contactLoader, action as contactAction} from "./routes/contact";
 import EditContact,{EditAction as editAction} from "./routes/edit";
 import {action as DeleteAction} from "./routes/destroy";
 import Index from "./routes/index";
@@ -26,34 +26,39 @@ const router = createBrowserRouter([
         action:rootAction,
         children:[
             {
-                index: true, 
-                element: <Index />
-            },
-            {
-                path: "contacts/:contactId",
-                element: <Contact></Contact>,
-                loader:contactLoader,
-            },
-            {
-                path: "contacts/:contactId/edit",
-                element: <EditContact />,
-                loader: contactLoader,
-                action: editAction,
-            },
-            {
-                path:"contacts/:contactId/destroy",
-                action: DeleteAction,
+                errorElement: <ErrorPage></ErrorPage>,
+                children:[
+                    {
+                        index: true, 
+                        element: <Index />
+                    },
+                    {
+                        path: "contacts/:contactId",
+                        element: <Contact></Contact>,
+                        loader:contactLoader,
+                        action:contactAction,
+                    },
+                    {
+                        path: "contacts/:contactId/edit",
+                        element: <EditContact />,
+                        loader: contactLoader,
+                        action: editAction,
+                    },
+                    {
+                        path:"contacts/:contactId/destroy",
+                        action: DeleteAction,
+                    }
+                ],
             }
-        ]
+        ],
     },
 ]);
 
 ReactDOM.render(
     <React.StrictMode>
+        <CssBaseline/>
         <ThemeProvider theme={theme}>
-            <CssBaseline/>
             <RouterProvider router={router} />
-            {/* <App></App> */}
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')
