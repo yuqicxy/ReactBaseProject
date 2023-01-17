@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Outlet, redirect,Link,useLoaderData,Form, NavLink, useNavigation } from "react-router-dom";
+import { Outlet, redirect,Link,useLoaderData,Form, NavLink, useNavigation, useSubmit } from "react-router-dom";
 import { getContacts,createContact } from "../contacts";
 
 // export async function action() {
@@ -22,29 +22,42 @@ export async function loader({ request }) {
 export default function Root() {
     const { contacts,q } = useLoaderData();
     const navigation = useNavigation();
+    const submit = useSubmit();
 
     useEffect(() => {
         document.getElementById("q").value = q;
     }, [q]);
+
+    const searching = navigation.location && new URLSearchParams(navigation.location.search).has("q");
     
     return (
       <>
         <div id="sidebar">
             <h1>React Router Contacts</h1>
             <div>
-                <Form method="get" id="search-form" role="search">
+                <Form id="search-form" role="search">
                     <input
                         id="q"
+                        className={searching ? "loading" : ""}
                         aria-label="Search contacts"
                         placeholder="Search"
                         type="search"
                         name="q"
                         defaultValue={q}
+                        // onChange = {(event)=>{
+                        //     submit(event.currentTarget.form)
+                        // }}
+                        onChange={(event)=>{
+                            const isFirstSearch = q == null;
+                            submit(event.currentTarget.form, {
+                                replace: !isFirstSearch,
+                            });
+                        }}
                     />
                     <div
                         id="search-spinner"
                         aria-hidden
-                        hidden={true}
+                        hidden={!searching}
                     />
                     <div
                         className="sr-only"
